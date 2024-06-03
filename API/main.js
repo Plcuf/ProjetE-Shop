@@ -10,4 +10,4 @@ app.use(cors({
 const routes = require("./routeur/routeur");
 app.use(routes);
 
-app.listen(port, () => console.log('listening on port ${port}'));
+app.listen(port, () => console.log(`listening on port ${port}`));
