@@ -138,10 +138,10 @@ header>.side>.side-menu>.categories>li:hover {
     color: var(--secondary-signature-color);
 }
 
-/*
+
 @media (max-width: 768px) {
-    header>.side-menu {
+    header>.side {
         transform: translateX(-100%);
     }
 }
-*/
+
