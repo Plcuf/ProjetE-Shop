@@ -47,10 +47,23 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(resulsts[0]);
+                    resolve(results[0]);
                 }
             })
         })
+    }
+
+    static getProducts(){
+        const query = 'SELECT * FROM Product;';
+        return new Promise((resolve, reject) => {
+            connection.query(query, (err, results) => {
+                if (err){
+                    reject(err);
+                } else {
+                    resolve(results[0]);
+                }
+            })
+        });
     }
 }
 

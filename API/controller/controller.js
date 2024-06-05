@@ -2,11 +2,8 @@ const Produit = require('../models/Product');
 
 exports.getProduct = async (req, res) => {
     const productID = req.params.id;
-    console.log("contro :", productID);
-
     try {
         const product = await Produit.getProduct(productID);
-        console.log(product);
         if (!product) {
             res.status(404).json({
                 message: "product not found."
@@ -18,8 +15,6 @@ exports.getProduct = async (req, res) => {
             });
         }
     } catch (error) {
-        console.log("catch");
-
         console.error(error);
         res.status(500).json({
             message: 'Internal server error'
@@ -32,7 +27,6 @@ exports.getImages = async (req, res) => {
     const ProductID = req.params.id;
     try {
         const images = await Produit.getImages(ProductID);
-        console.log(images);
         if (!images) {
             res.status(404).json({
                 message: "Product not found."
@@ -44,7 +38,7 @@ exports.getImages = async (req, res) => {
             });
         }
     } catch (error) {
-        console.error(error);
+        console.log(error);
         res.status(500).json({
             message: 'Internal server error.'
         });
@@ -92,5 +86,26 @@ exports.getFranchise = async (req, res) => {
         res.status(500).json({
             message: "Internal Server Error."
         });
+    }
+}
+
+exports.getProducts = async(req, res) => {
+    try {
+        const Products = await Product.getProducts();
+        if (!Products) {
+            res.status(404).json({
+                message: "Products not found."
+            })
+        } else {
+            res.status(200).json({
+                message: "Products found successfully.",
+                Products
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Internal server error."
+        })
     }
 }
