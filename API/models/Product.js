@@ -2,12 +2,9 @@ const connection = require('../config/db');
 
 class Product {
     static getProduct(ProductId){
-        console.log("models");
         const query = 'SELECT * FROM Product WHERE id = ?;';
         return new Promise((resolve, reject) => {
-            console.log("pormsss");
             connection.query(query, [ProductId], (err, results) => {
-                console.log(err,results);
                 if(err){
                     reject(err);
                 } else {

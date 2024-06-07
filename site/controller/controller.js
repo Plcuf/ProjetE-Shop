@@ -1,3 +1,5 @@
+const Model = require('../models/products');
+
 exports.ErrorPage = async (req, res) => {
     try{
         res.render('error');
@@ -10,25 +12,17 @@ exports.ErrorPage = async (req, res) => {
 }
 
 exports.Index = async (req, res) => {
-    fetch('http://localhost:3000/products')
-    .then(response => {
-        console.log(response);
-        return response.json();
-    })
-    .then(data => {
-        console.log(data.Products);
-        let products = data.Products;
-        products.forEach(product => {
-            product.Promo = product.Price - (product.Price*product.Promo)/100.00;
-        })
-        res.render('index', {products});
-    })
-    .catch(error => {
-        console.log(error);
+    try {
+        let listProducts = await Model.getProducts();
+        for(let i=0; i < listProducts.length;i++){
+            listProducts[i].images = await Model.getImages(listProducts[i].id);;
+        }
+        res.render('index', {listProducts});
+    } catch (error) {
         res.status(500).json({
-            message: "Internal server error"
+            message: 'Internal server error'
         });
-    })
+    }
 }
 
 exports.Product = async (req, res) => {
@@ -38,7 +32,9 @@ exports.Product = async (req, res) => {
         return response.json();
     })
     .then(data => {
-        res.render('item', data)
+        console.log(data);
+        let product = data;
+        res.render('item', product);
     })
     .catch(err => {
         console.log(err);
@@ -63,3 +59,4 @@ exports.Favorites = async (req, res) => {
         res.status(500);
     }
 }
+

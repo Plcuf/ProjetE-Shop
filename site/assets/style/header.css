@@ -17,6 +17,7 @@
 }
 
 header {
+    z-index: 0;
     display: flex;
     flex-direction: column;
     position:fixed;
@@ -74,7 +75,7 @@ header.top-menu> img:hover {
 }
 
 header>.side {
-    z-index: 1;
+    z-index: 2;
     width: 250px;
     height: calc(100vh - 78px);
 
@@ -83,6 +84,7 @@ header>.side {
     transition: .3s;
     overflow-y: auto;
     scrollbar-color: var(--secondary-signature-color) var(--dark-background);
+    transform: translateX(-100%);
 }
 
 header>.side>.side-menu {
@@ -139,9 +141,10 @@ header>.side>.side-menu>.categories>li:hover {
 }
 
 
-@media (max-width: 768px) {
+/**@media (max-width: 768px) {
     header>.side {
         transform: translateX(-100%);
+        z-index: 0;
     }
 }
-
+**/

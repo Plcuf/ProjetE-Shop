@@ -5,9 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Bonk Shop </title>
     <link rel="stylesheet" href="../assets/style/index.css">
+    <link rel="stylesheet" href="../assets/style/header.css">
 </head>
 <body>
-    <%- include('./header'); %>
+    <header>
+        <div class="top-menu">
+            <img class="svg menu" src="../assets/img/icons/menu.svg" alt="menu">
+            <img class="logo" src="../assets/img/logo/textlogo.png" alt="go to index">
+            <div>
+                <img class="svg" src="../assets/img/icons/favorite.svg" alt="favorites">
+                <img class="svg" src="../assets/img/icons/shopping_cart.svg" alt="cart">
+            </div>
+        </div>
+        <div class="side">
+            <div class="side-menu">
+                <div class= "categories">
+                    <p class="main"> Main </p>
+                    <li> Panier </li>
+                    <li> Favorites </li>
+                </div>
+                <div class="categories">
+                    <p class="main"> Categories </p>
+                    <li> Figurines </li>
+                    <li> Body Pillows </li>
+                    <li> Mouse Pads </li>
+                    <li> Swords </li>
+                </div>
+                <div class="categories">
+                    <p class="main"> Franchises </p>
+                    <li> One Piece </li>
+                    <li> Horimiya </li>
+                    <li> Fire Force </li>
+                    <li> Black Clover </li>
+                    <li> Demon Slayer </li>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script src="../assets/script/header.js"></script>
+
     <div class="sort">
         <input type="radio" id="croissant" name="sort" value="price" checked>
         <label for="croissant"> Prix (croissant) </label>
@@ -16,11 +52,11 @@
     </div>
 
     <div class="items">
-        <% products.forEach(function(item) { %>
+        <% listProducts.forEach(function(item) { %>
             <div class="item">
                 <div class="images">
-                    <img src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
-                    <img class="underlay" src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
+                    <img src="<%= item.images[0].path %>">
+                    <img class="underlay" src="<%= item.images[1].path %>">
                 </div>
                 <div class="infos">
                     <p> <%= item.Name %> </p>
