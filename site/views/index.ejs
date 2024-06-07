@@ -61,8 +61,10 @@
                 <div class="infos">
                     <p> <%= item.Name %> </p>
                     <div class="price"> 
-                        <p class="reduction"> <%= item.Price %> </p>
-                        <p> <%= item.Promo %> </p>
+                        <% if (item.Promo != item.Price) { %>
+                        <p class="reduction"> <%= item.Price %> € </p>
+                        <% } %>
+                        <p> <%= item.Promo %>€ </p>
                     </div>
                 </div>
             </div>

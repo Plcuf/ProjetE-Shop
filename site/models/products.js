@@ -7,11 +7,21 @@ class Products {
             response.data.Products.forEach(product => {
                 product.Promo = product.Price - (product.Price*product.Promo)/100.00;
             })
-            console.log(response.data);
-            return response.data.Products
+            return response.data.Products;
         }).catch(err => {
             console.log(`Erreur getImages : ${err}`);
             return null
+        })
+    }
+
+    static async getProduct(id) {
+        return await axios.get(`http://localhost:3000/product/${id}`)
+        .then(response => {
+            response.data.product.Promo = reponse.data.product.Price - (reponse.data.product.Price*response.data.product.Promo)/100.00;
+            return reponse.data.product;
+        }) .catch(err => {
+            console.log(err);
+            return null;
         })
     }
 

@@ -27,23 +27,15 @@ exports.Index = async (req, res) => {
 
 exports.Product = async (req, res) => {
     let productId = req.params.id;
-    fetch(`http://localhost:3000/product/${productId}`)
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        let product = data;
-        res.render('item', product);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(404);
-    })
+    let produit = await Model.getProduct(productId);
+    produit.images = await Model.getImages(productId);
+    res.render('item', produit);
 }
 
 exports.Cart = async (req, res) => {
     try {
+        let Client = await JSON.parse(localStorage.getItem("client"));
+        
         res.render('cart');
     } catch (error) {
         console.log(error);
