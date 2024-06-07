@@ -12,16 +12,21 @@ exports.ErrorPage = async (req, res) => {
 exports.Index = async (req, res) => {
     fetch('http://localhost:3000/products')
     .then(response => {
+        console.log(response);
         return response.json();
     })
     .then(data => {
-        console.log(data);
-        res.render('header');
+        console.log(data.Products);
+        let products = data.Products;
+        products.forEach(product => {
+            product.Promo = product.Price - (product.Price*product.Promo)/100.00;
+        })
+        res.render('index', {products});
     })
     .catch(error => {
         console.log(error);
         res.status(500).json({
-            message: "Internal sever error"
+            message: "Internal server error"
         });
     })
 }

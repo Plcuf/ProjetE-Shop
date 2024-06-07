@@ -23,7 +23,7 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(results[0]);
+                    resolve(results);
                 }
             });
         });
@@ -35,7 +35,7 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(results[0]);
+                    resolve(results);
                 }
             })
         })
@@ -47,7 +47,7 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(results[0]);
+                    resolve(results);
                 }
             })
         })
@@ -60,7 +60,7 @@ class Product {
                 if (err){
                     reject(err);
                 } else {
-                    resolve(results[0]);
+                    resolve(results);
                 }
             })
         });

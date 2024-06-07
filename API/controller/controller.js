@@ -48,7 +48,7 @@ exports.getImages = async (req, res) => {
 exports.getCategory = async (req, res) => {
     const Type = req.params.type;
     try{
-        const products = await Product.getCategory(Type);
+        const products = await Produit.getCategory(Type);
         if(!products) {
             res.status(404).json({
                 message: "Products not found."
@@ -70,7 +70,7 @@ exports.getCategory = async (req, res) => {
 exports.getFranchise = async (req, res) => {
     const FranchiseID = req.params.id;
     try{
-        const products = await Product.getFranchise(FranchiseID);
+        const products = await Produit.getFranchise(FranchiseID);
         if(!products) {
             res.status(404).json({
                 message: "Products not found."
@@ -91,7 +91,7 @@ exports.getFranchise = async (req, res) => {
 
 exports.getProducts = async(req, res) => {
     try {
-        const Products = await Product.getProducts();
+        const Products = await Produit.getProducts();
         if (!Products) {
             res.status(404).json({
                 message: "Products not found."
