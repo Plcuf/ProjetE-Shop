@@ -1,0 +1,421 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --dark-background: #242424;
+    --light-background: #333333;
+    --signature-color: #8F4FBA;
+    --secondary-signature-color: #C09BD8;
+    --text-color: #E6E4CE;
+}
+
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url(../fonts/JosefinSans-VariableFont_wght.ttf);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    background-color: var(--light-background);
+}
+
+.content {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.pictures {
+    max-width: 350px;
+    width: 90%;
+    height: auto;
+
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    background-color: var(--dark-background);
+}
+
+.pictures>.carousel {
+    width: 100%;
+    height: 400px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.pictures>.carousel>img {
+    width: 70%;
+    height: 400px;
+
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.pictures>.carousel>.left-arrow {
+    width: 15px;
+    height: 15px;
+    
+    border-bottom: 2px solid var(--signature-color);
+    border-left: 2px solid var(--signature-color);
+
+    transform: rotate(45deg);
+}
+
+.pictures>.carousel>.right-arrow {
+    width: 15px;
+    height: 15px;
+    
+    border-top: 2px solid var(--signature-color);
+    border-right: 2px solid var(--signature-color);
+
+    transform: rotate(45deg);
+}
+
+.pictures>.carousel>.arrow:hover {
+    cursor: pointer;
+}
+
+.pictures>.previews {
+    width: 70%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pictures>.previews>img {
+    width: calc(100% / 5);
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.specs {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.name-price {
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 30px;
+}
+
+.name-price>p {
+    font-family: 'Josefin Sans';
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-color);
+    align-self: center;
+}
+
+.name-price>.prices {
+    max-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+
+    font-family: 'Josefin Sans';
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.name-price>.prices>.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.name-price>.prices>.price>.reduction {
+    color: var(--signature-color);
+    font-size: 20px;
+}
+
+.name-price>.prices>p {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.choix {
+    width: 90%;
+    max-width: 350px;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    background-color: var(--dark-background);
+    border: 3px solid var(--signature-color);
+    overflow-x: auto;
+    font-family: 'Josefin Sans';
+}
+
+.choix>input {
+    display: none;
+}
+
+.choix>label {
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 15px;
+    padding: 10px;
+    transition: .3s;
+}
+
+.choix>input:checked + label {
+    border-color: var(--signature-color);
+}
+
+.shop {
+    width: 90%;
+    max-width: 350px;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop>.panier {
+    width: 75%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--secondary-signature-color);
+    text-decoration: none;
+    color: var(--dark-background);
+    font-size: 20px;
+    font-family: 'Josefin Sans';
+    font-weight: 700;
+    border: 3px solid var(--secondary-signature-color);
+    transition: .3s;
+}
+
+.shop>.panier:hover {
+    background-color: var(--dark-background);
+    color: var(--secondary-signature-color);
+}
+
+.shop>.favoris {
+    width: 15%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--secondary-signature-color);
+    color: var(--dark-background);
+    font-size: 20px;
+    font-family: 'Josefin Sans';
+    font-weight: 700;
+    border: 3px solid var(--secondary-signature-color);
+    transition: .3s;
+}
+
+.shop>.favoris:hover {
+    background-color: var(--dark-background);
+    color: var(--secondary-signature-color);
+}
+
+.details {
+    width: 90%;
+    max-width: 350px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: var(--text-color);
+    font-family: 'Josefin Sans';
+    margin-top: 70px;
+}
+
+.details>.desc {
+    width: 95%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: 3px solid var(--signature-color);
+    background-color: var(--dark-background);
+    padding: 10px;
+}
+
+.details>.desc>p:nth-child(2) {
+    color: rgb(98, 98, 98);
+}
+
+.details>.desc>p:nth-child(2):hover {
+    cursor: pointer;
+}
+
+.suggestions {
+    width: 100%;
+    height: auto;
+
+    background-color: var(--light-background);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 70px;
+}
+
+.maybe {
+    font-family: 'Josefin Sans';
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+.suggestions>.item {
+    width: 300px;
+    height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: spa;
+    align-items: center;
+    background-color: var(--dark-background);
+}
+
+.suggestions>.item>.images {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    display: flex;
+}
+
+.suggestions>.item>.images>img {
+    z-index: 2;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    transition: .3s;
+}
+
+.suggestions>.item>.images>img:nth-child(1):hover {
+    opacity: 0;
+}
+
+.suggestions>.item>.images>img:nth-child(1):hover + img {
+    opacity: 1;
+}
+
+.suggestions>.item>.images>.underlay {
+    z-index: 1;
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    opacity: 0;
+}
+
+.suggestions>.item>.infos {
+    width: 90%;
+    height: 100%;
+    font-family: 'Josefin Sans';
+    color: var(--text-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.suggestions>.item>.infos>p:nth-child(1) {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.suggestions>.item>.infos>.price {
+    font-size: 17px;
+    margin-top: 10px;
+    text-align: end;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+
+.suggestions>.item>.infos>.price>.reduction {
+    text-decoration: line-through;
+    text-decoration-color: var(--signature-color);
+    text-decoration-thickness: 3px;
+}
+
+@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+        justify-content: center;
+        align-items: start;
+    }
+    .specs {
+        width: 450px;
+        margin-top: 100px;
+        align-items: center;
+    }
+    .pictures {
+        width: 40%;
+        max-width: 450px;
+    }
+}
