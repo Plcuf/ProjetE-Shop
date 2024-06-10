@@ -10,4 +10,6 @@ router.get('/category/:type', controller.getCategory);
 
 router.get('/franchise/:id', controller.getFranchise);
 
+router.get('/products', controller.getProducts);
+
 module.exports = router;

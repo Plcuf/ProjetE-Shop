@@ -2,12 +2,9 @@ const connection = require('../config/db');
 
 class Product {
     static getProduct(ProductId){
-        console.log("models");
         const query = 'SELECT * FROM Product WHERE id = ?;';
         return new Promise((resolve, reject) => {
-            console.log("pormsss");
             connection.query(query, [ProductId], (err, results) => {
-                console.log(err,results);
                 if(err){
                     reject(err);
                 } else {
@@ -23,7 +20,7 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(results[0]);
+                    resolve(results);
                 }
             });
         });
@@ -35,7 +32,7 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(results[0]);
+                    resolve(results);
                 }
             })
         })
@@ -47,10 +44,23 @@ class Product {
                 if(err){
                     reject(err);
                 } else {
-                    resolve(resulsts[0]);
+                    resolve(results);
                 }
             })
         })
+    }
+
+    static getProducts(){
+        const query = 'SELECT * FROM Product;';
+        return new Promise((resolve, reject) => {
+            connection.query(query, (err, results) => {
+                if (err){
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            })
+        });
     }
 }
 
