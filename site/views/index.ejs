@@ -9,40 +9,8 @@
 </head>
 <body>
     <header>
-        <div class="top-menu">
-            <img class="svg menu" src="../assets/img/icons/menu.svg" alt="menu">
-            <img class="logo" src="../assets/img/logo/textlogo.png" alt="go to index">
-            <div>
-                <img class="svg" src="../assets/img/icons/favorite.svg" alt="favorites">
-                <img class="svg" src="../assets/img/icons/shopping_cart.svg" alt="cart">
-            </div>
-        </div>
-        <div class="side">
-            <div class="side-menu">
-                <div class= "categories">
-                    <p class="main"> Main </p>
-                    <li> Panier </li>
-                    <li> Favorites </li>
-                </div>
-                <div class="categories">
-                    <p class="main"> Categories </p>
-                    <li> Figurines </li>
-                    <li> Body Pillows </li>
-                    <li> Mouse Pads </li>
-                    <li> Swords </li>
-                </div>
-                <div class="categories">
-                    <p class="main"> Franchises </p>
-                    <li> One Piece </li>
-                    <li> Horimiya </li>
-                    <li> Fire Force </li>
-                    <li> Black Clover </li>
-                    <li> Demon Slayer </li>
-                </div>
-            </div>
-        </div>
+        <%- include('./header'); %>
     </header>
-    <script src="../assets/script/header.js"></script>
 
     <div class="sort">
         <input type="radio" id="croissant" name="sort" value="price" checked>
@@ -53,7 +21,7 @@
 
     <div class="items">
         <% listProducts.forEach(function(item) { %>
-            <div class="item">
+            <a class="item" href="produit/<%= item.id %>">
                 <div class="images">
                     <img src="<%= item.images[0].path %>">
                     <img class="underlay" src="<%= item.images[1].path %>">
@@ -67,7 +35,7 @@
                         <p> <%= item.Promo %>€ </p>
                     </div>
                 </div>
-            </div>
+            </a>
         <% }); %>
     </div>
 
