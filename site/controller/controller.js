@@ -30,9 +30,10 @@ exports.Product = async (req, res) => {
     try {
 
         let produit = await Model.getProduct(productId);
+        produit.images = await Model.getImages(produit.id);
 
-        produit.images = await Model.getImages(productId);
-        res.render('item', {produit});
+        let recommendations = await Model.getRecommend();
+        res.render('item', {produit, recommendations});
     } catch (error) {
         console.log(error);
         res.status(500);
@@ -41,8 +42,6 @@ exports.Product = async (req, res) => {
 
 exports.Cart = async (req, res) => {
     try {
-        let Client = await JSON.parse(localStorage.getItem("client"));
-        
         res.render('cart');
     } catch (error) {
         console.log(error);

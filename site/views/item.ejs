@@ -5,35 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Bonk Shop </title>
     <link rel="stylesheet" href="../assets/style/item.css">
+    <link rel="stylesheet" href="../assets/style/header.css">
 </head>
 <body>
+    <header>
+        <%- include('./header'); %>
+        <div class="side">
+            <%- include('./side'); %>
+        </div>
+    </header>
+    <script src="../assets/script/header.js"></script>
     <div class="content">
         <div class="pictures">
             <div class="carousel">
                 <div class="left-arrow arrow"></div>
     
-                <img src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
+                <img src="<%= produit.images[0].path %>">
     
                 <div class="right-arrow arrow"></div>
             </div>
             <div class="previews">
-                <img src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
+                <img src="<%= produit.images[0].path %>">
     
-                <img src="../assets/img/images/7afkiyfds1u61.jpg">
+                <img src="<%= produit.images[1].path %>">
     
-                <img src="../assets/img/images/horimiya_wallpaper___zeikku_amv_by_zeikku03_deg61g0-fullview.jpg">
+                <img src="<%= produit.images[2].path %>">
             </div>
         </div>
         
         <div class="specs">
             <div class="name-price">
-                <p> Poster Horimiya </p>
+                <p> <%= produit.Name %> </p>
                 <div class="prices">
                     <div class="price">
                         <p class="reduction"> -30% </p>
-                        <p> 12€ </p>
+                        <p> <%= produit.Promo %> € </p>
                     </div>
-                    <p> Ancien prix : 15€ </p>
+                    <p> Ancien prix : <%= produit.Price %> </p>
                 </div>
             </div>
         
@@ -47,14 +55,14 @@
             </div>
         
             <div class="shop">
-                <a class="panier" href="#"> Ajouter au panier </a>
+                <a class="panier" href="/cart"> Ajouter au panier </a>
                 <a class="favoris" href="#"> <img src="../assets/img/icons/heart_plus.svg"> </a>
             </div>
         
             <div class="details">
                 <p> Details du produit : </p>
                 <div class="desc">
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
+                    <p> <%= produit.Description %> </p>
                     <p class="plus"> Voir plus </p>
                 </div>
             </div>
@@ -63,48 +71,21 @@
 
     <p class="maybe"> Vous aimerez aussi : </p>
     <div class="suggestions">
-
+        <% recommendations.forEach(item => { %>
         <div class="item">
             <div class="images">
-                <img src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
-                <img class="underlay" src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
+                <img src="<%= item.images[0].path %>">
+                <img class="underlay" src="<%= item.images[1].path %>">
             </div>
             <div class="infos">
-                <p> truc machin bidule </p>
+                <p> <%= item.Name %> </p>
                 <div class="price"> 
-                    <p class="reduction"> 20€ </p>
-                    <p> 12€ </p>
+                    <% if(item.Promo != item.Price) { %> <p class="reduction"> <%= item.Price %> € </p> <% } %>
+                    <p> <%= item.Promo %></p>
                 </div>
             </div>
         </div>
-
-        <div class="item">
-            <div class="images">
-                <img src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
-                <img class="underlay" src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
-            </div>
-            <div class="infos">
-                <p> truc machin bidule </p>
-                <div class="price"> 
-                    <p class="reduction"> 20€ </p>
-                    <p> 12€ </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="item">
-            <div class="images">
-                <img src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
-                <img class="underlay" src="../assets/img/images/fposter,small,wall_texture,product,750x1000.jpg">
-            </div>
-            <div class="infos">
-                <p> truc machin bidule </p>
-                <div class="price"> 
-                    <p class="reduction"> 20€ </p>
-                    <p> 12€ </p>
-                </div>
-            </div>
-        </div>
+        <% }) %>
     </div>
     <script src="../assets/script/item.js"></script>
 </body>
