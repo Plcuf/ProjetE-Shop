@@ -60,6 +60,7 @@ body>.sort>label {
     cursor: pointer;
     margin-right: 30px;
     transition: .3s;
+    z-index: 1;
 }
 
 body>.sort>input:checked + label {
@@ -76,12 +77,13 @@ body>.items {
     justify-content: center;
     align-items: center;
     gap: 50px;
-}
-
+    }
+    
 body>.items>.item {
     width: 300px;
     height: 400px;
-
+    
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: spa;

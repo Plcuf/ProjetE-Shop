@@ -27,15 +27,21 @@ exports.Index = async (req, res) => {
 
 exports.Product = async (req, res) => {
     let productId = req.params.id;
-    let produit = await Model.getProduct(productId);
-    produit.images = await Model.getImages(productId);
-    res.render('item', produit);
+    try {
+
+        let produit = await Model.getProduct(productId);
+        produit.images = await Model.getImages(produit.id);
+
+        let recommendations = await Model.getRecommend();
+        res.render('item', {produit, recommendations});
+    } catch (error) {
+        console.log(error);
+        res.status(500);
+    }
 }
 
 exports.Cart = async (req, res) => {
     try {
-        let Client = await JSON.parse(localStorage.getItem("client"));
-        
         res.render('cart');
     } catch (error) {
         console.log(error);
@@ -52,3 +58,7 @@ exports.Favorites = async (req, res) => {
     }
 }
 
+exports.Pay = async (req, res) => {
+    const api_token = '63d6706e-13c0-4aa7-9726-931aa32ccb69';
+
+}
