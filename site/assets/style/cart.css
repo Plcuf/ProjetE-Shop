@@ -1,0 +1,298 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --dark-background: #242424;
+    --light-background: #333333;
+    --signature-color: #8f4fba;
+    --secondary-signature-color: #c09bd8;
+    --text-color: #e6e4ce;
+}
+
+@font-face {
+    font-family: "Josefin Sans";
+    src: url(../fonts/JosefinSans-VariableFont_wght.ttf);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    background-color: var(--light-background);
+}
+
+.buy {
+    margin-top: 100px;
+
+    width: 200px;
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid var(--secondary-signature-color);
+    border-top: 0px;
+}
+
+.buy>a {
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--dark-background);
+    font-family: "Josefin Sans";
+    font-size: 25px;
+    text-decoration: none;
+    background-color: var(--secondary-signature-color);
+    border: 3px solid var(--secondary-signature-color);
+    transition: 0.3s;
+}
+
+.buy>a:hover {
+    background-color: var(--dark-background);
+    color: var(--secondary-signature-color);
+}
+
+.buy>p {
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--text-color);
+    font-family: "Josefin Sans";
+    font-size: 25px;
+    background-color: var(--dark-background);
+}
+
+.cart-items {
+    width: 85%;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    background-color: var(--light-background);
+    border: 10px solid var(--dark-background);
+    padding: 10px;
+}
+
+.cart-items>.item {
+    width: 250px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    background-color: var(--dark-background);
+    padding: 10px;
+}
+
+.cart-items>.item>img {
+    width: 250px;
+    height: 250px;
+
+    object-fit: cover;
+}
+
+.cart-items>.item>.item-infos {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.cart-items>.item>.item-infos>.name-price {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    font-family: "Josefin Sans";
+    color: var(--text-color);
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.cart-items>.item>.item-infos>.name-price>.price {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 15px;
+    align-self: end;
+}
+
+.cart-items>.item>.item-infos>.name-price>.price>.reduction {
+    text-decoration: line-through;
+    text-decoration-color: var(--signature-color);
+    text-decoration-thickness: 3px;
+}
+
+.cart-items>.item>.item-infos>.button-line {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.cart-items>.item>.item-infos>.button-line>.quantity {
+    width: 50%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-items>.item>.item-infos>.button-line>.quantity>button {
+    width: 50px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--dark-background);
+    font-family: "Josefin Sans";
+    font-size: 30px;
+    text-decoration: none;
+    background-color: var(--secondary-signature-color);
+    border: 3px solid var(--secondary-signature-color);
+    transition: 0.3s;
+}
+
+.cart-items>.item>.item-infos>.button-line>.quantity>p {
+    font-family: "Josefin Sans";
+    font-size: 15px;
+    color: var(--text-color);
+}
+
+.cart-items>.item>.item-infos>.button-line>.quantity>button:hover {
+    background-color: var(--dark-background);
+    color: var(--secondary-signature-color);
+}
+
+.cart-items>.item>.item-infos>.button-line>.buttons {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-items>.item>.item-infos>.button-line>.buttons>button {
+    width: 100px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--dark-background);
+    font-family: "Josefin Sans";
+    font-size: 15px;
+    text-decoration: none;
+    background-color: var(--secondary-signature-color);
+    border: 3px solid var(--secondary-signature-color);
+    transition: 0.3s;
+}
+
+.cart-items>.item>.item-infos>.button-line>.buttons>button:hover {
+    background-color: var(--dark-background);
+    color: var(--secondary-signature-color);
+}
+
+@media (min-width: 900px) {
+    .cart-items {
+        flex-direction: column;
+    }
+
+    .cart-items>.item {
+        width: 95%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .cart-items>.item>.item-infos {
+        height: 250px;
+    }
+
+    .cart-items>.item>.item-infos>.name-price {
+        font-size: 20px;
+        height: 50%;
+        padding-right: 30px;
+    }
+
+    .cart-items>.item>.item-infos>.name-price {
+        font-size: 23px;
+        gap: 40px;
+    }
+
+    .cart-items>.item>.item-infos>.name-price>.price {
+        font-size: 20px;
+    }
+
+    .cart-items>.item>.item-infos>.button-line {
+        height: 50%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+        padding: 20px;
+        padding-right: 20px;
+    }
+
+    .cart-items>.item>.item-infos>.button-line>.quantity>button {
+        width: 50px;
+        height: 40px;
+        font-size: 30px;
+    }
+
+    .cart-items>.item>.item-infos>.button-line>.buttons {
+        gap: 20px;
+        justify-content: center;
+        
+    }
+
+    .cart-items>.item>.item-infos>.button-line>.buttons>button {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
