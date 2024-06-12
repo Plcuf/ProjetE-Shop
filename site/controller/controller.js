@@ -45,7 +45,11 @@ exports.Product = async (req, res) => {
 
 exports.Cart = async (req, res) => {
     try {
-        res.render('cart');
+        let listProducts = await Model.getProducts();
+        for (let i = 0; i < listProducts.length; i++) {
+            listProducts[i].images = await Model.getImages(listProducts[i].id);
+        }
+        res.render('cart', {listProducts});
     } catch (error) {
         console.log(error);
         res.status(500);
@@ -63,5 +67,10 @@ exports.Favorites = async (req, res) => {
 
 exports.Pay = async (req, res) => {
     const api_token = '63d6706e-13c0-4aa7-9726-931aa32ccb69';
-
+    try {
+        let price = req.params.price;
+        res.render('pay', {price});
+    } catch (error) {
+        res.status(500);
+    }
 }

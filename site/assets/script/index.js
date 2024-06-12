@@ -1,20 +1,42 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const tri_buttons = document.getElementsByName("sort");
-    const items = document.querySelector('.items');
-    tri_buttons.forEach(button => {
-        button.addEventListener("changed", () => {
-            if (button.id === "croissant") {
-                console.log('quaso');
-                for(let i = 0; i < items.length/2; i++) {
-                    let save = items.children[i];
-                    items.children[i].innerHTML = items.children[items.length - (i + 1)].innerHTML;
-                    items.children[items.children[items.length - (i + 1)]].innerHTML = save.innerHTML;
-                }
-                
-            } else {
-                items.style.flexDirection = "row-reversed";
-                
-            }
-        });
-    })
-})
+const items = document.querySelector('.items');
+const item = document.querySelectorAll('.item');
+
+const croissant = document.querySelector('#croissant');
+const decroissant = document.querySelector('#decroissant');
+
+const liste_croissante = []
+const liste_decroissante = []
+
+item.forEach(item => {
+    if (liste_croissante.length === 0) {
+        liste_croissante.push(item);
+        liste_decroissante.push(item);
+    } else {
+        let i = 0;
+        while (i < liste_croissante.length && item.querySelector('.prix').textContent > liste_croissante[i].querySelector('.prix').textContent) {
+            i++;
+        }
+        liste_croissante.splice(i, 0, item);
+
+        i = 0;
+        
+        while (i < liste_decroissante.length && item.querySelector('.prix').textContent < liste_decroissante[i].querySelector('.prix').textContent) {
+            i++;
+        }
+        liste_decroissante.splice(i, 0, item);
+    }
+});
+
+croissant.addEventListener('click', () => {
+    items.innerHTML = '';
+    liste_croissante.forEach(item => {
+        items.appendChild(item);
+    });
+});
+
+decroissant.addEventListener('click', () => {
+    items.innerHTML = '';
+    liste_decroissante.forEach(item => {
+        items.appendChild(item);
+    });
+});

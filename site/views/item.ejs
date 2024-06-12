@@ -78,27 +78,29 @@
         <p class="maybe"> Vous aimerez aussi : </p>
         <div class="suggestions">
             <% recommendations.forEach(item=> { %>
-                <div class="item">
-                    <div class="images">
-                        <img src="<%= item.images[0].path %>">
-                        <img class="underlay" src="<%= item.images[1].path %>">
-                    </div>
-                    <div class="infos">
-                        <p>
-                            <%= item.Name %>
-                        </p>
-                        <div class="price">
-                            <% if(item.Promo !=item.Price) { %>
+                <a href="/produit/<%= item.id %>">
+                    <div class="item">
+                        <div class="images">
+                            <img src="<%= item.images[0].path %>">
+                            <img class="underlay" src="<%= item.images[1].path %>">
+                        </div>
+                        <div class="infos">
+                            <p>
+                                <%= item.Name %>
+                            </p>
+                            <div class="price">
+                                <% if(item.Promo !=item.Price) { %>
                                 <p class="reduction">
                                     <%= item.Price %> €
                                 </p>
                                 <% } %>
-                                    <p>
-                                        <%= item.Promo %>
-                                    </p>
+                                <p>
+                                    <%= item.Promo %>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <% }) %>
         </div>
         <script src="../assets/script/item.js"></script>
