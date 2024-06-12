@@ -4,6 +4,8 @@ const desc = document.querySelector('.desc>p:nth-child(1)');
 let full_desc = desc.textContent;
 let short_desc = full_desc.slice(0, 250) + '...';
 
+desc.textContent = short_desc;
+
 plus.addEventListener('click', function() {
     if (desc.textContent === short_desc) {
         desc.textContent = full_desc;
