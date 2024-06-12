@@ -1,13 +1,14 @@
 const plus = document.querySelector('.plus');
 const desc = document.querySelector('.desc>p:nth-child(1)');
 
+let full_desc = desc.textContent;
+let short_desc = full_desc.slice(0, 250) + '...';
+
 plus.addEventListener('click', function() {
-    if (plus.textContent === 'Voir plus') {
-        desc.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.';
-        plus.textContent = 'Voir moins'
+    if (desc.textContent === short_desc) {
+        desc.textContent = full_desc;
     } else {
-        desc.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.';
-        plus.textContent = 'Voir plus'
+        desc.textContent = short_desc;
     }
 });
 
