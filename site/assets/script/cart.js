@@ -1,9 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    let cart = localStorage.getItem("cart");
-    if (!cart)
-})
-
-
 const items_infos = document.querySelectorAll('.item-infos');
 
 items_infos.forEach(item_info => {
