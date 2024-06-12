@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <link rel="stylesheet" href="../assets/style/index.css">
     <link rel="stylesheet" href="../assets/style/header.css">
 </head>
+
 <body>
     <header>
         <%- include('./header'); %>
     </header>
+    <%- include('./side'); %>
 
     <div class="sort">
         <input type="radio" id="croissant" name="sort" value="price" checked>
@@ -18,27 +21,32 @@
         <input type="radio" id="decroissant" name="sort" value="price">
         <label for="decroissant"> Prix (décroissant) </label>
     </div>
-
-    <div class="items">
-        <% listProducts.forEach(function(item) { %>
+    <div class="items" id="items">
+        <% listProducts.forEach(item => { %>
             <a class="item" href="produit/<%= item.id %>">
                 <div class="images">
                     <img src="<%= item.images[0].path %>">
                     <img class="underlay" src="<%= item.images[1].path %>">
                 </div>
                 <div class="infos">
-                    <p> <%= item.Name %> </p>
-                    <div class="price"> 
+                    <p><%= item.Name %></p>
+                    <div class="price">
                         <% if (item.Promo != item.Price) { %>
-                        <p class="reduction"> <%= item.Price %> € </p>
+                        <p class="reduction">
+                            <%= item.Price %> €
+                        </p>
                         <% } %>
-                        <p> <%= item.Promo %>€ </p>
+                        <p class="prix" data-value="<%= item.Promo %>">
+                            <%= item.Promo %>€
+                        </p>
                     </div>
                 </div>
             </a>
-        <% }); %>
+        <% }) %>
     </div>
 
     <%- include('./footer'); %>
+    <script src="../assets/script/header.js"></script>
+    <script src="../assets/script/index.js"></script>
 </body>
 </html>

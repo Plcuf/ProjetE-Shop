@@ -76,8 +76,10 @@ header.top-menu> img:hover {
     cursor: pointer;
 }
 
-header>.side {
-    display: none;
+.side {
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 2;
     width: 250px;
     height: calc(100vh - 78px);
@@ -90,12 +92,12 @@ header>.side {
     margin-top: 75px;
 }
 
-header>.side.open{
+.side.open{
     transform: translateX(0%);
     transition: .3s;
 }
 
-header>.side>.side-menu {
+.side>.side-menu {
     width: 100%;
     height: auto;
 
@@ -108,7 +110,7 @@ header>.side>.side-menu {
     margin-bottom: 50px;
 }
 
-header>.side>.side-menu>.categories {
+.side>.side-menu>.categories {
     width: 80%;
     height: auto;
 
@@ -120,7 +122,7 @@ header>.side>.side-menu>.categories {
     gap: 5px;
 }
 
-header>.side>.side-menu>.categories>.main {
+.side>.side-menu>.categories>.main {
     font-size: larger;
     width: 80%;
     text-align: center;
@@ -134,7 +136,7 @@ header>.side>.side-menu>.categories>.main {
 
 }
 
-header>.side>.side-menu>.categories>li {
+.side>.side-menu>.categories>li {
     font-size: large;
     margin-left: 20px;
     color: var(--text-color);
@@ -142,7 +144,7 @@ header>.side>.side-menu>.categories>li {
     transition: .3s;
 }
 
-header>.side>.side-menu>.categories>li:hover {
+.side>.side-menu>.categories>li:hover {
     cursor: pointer;
     transform: translateX(10px);
     color: var(--secondary-signature-color);

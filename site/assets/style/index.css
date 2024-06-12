@@ -71,14 +71,13 @@ body>.items {
     width: 100%;
     height: auto;
 
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 50px;
-    }
-    
+}
+
 body>.items>.item {
     width: 300px;
     height: 400px;

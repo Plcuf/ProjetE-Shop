@@ -49,7 +49,6 @@ class Product {
             })
         })
     }
-
     static getProducts(){
         const query = 'SELECT * FROM Product;';
         return new Promise((resolve, reject) => {
