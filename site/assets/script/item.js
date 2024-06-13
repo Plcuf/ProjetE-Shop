@@ -1,14 +1,53 @@
 const plus = document.querySelector('.plus');
 const desc = document.querySelector('.desc>p:nth-child(1)');
 
+
 let full_desc = desc.textContent;
 let short_desc = full_desc.slice(0, 250) + '...';
+
+document.addEventListener('DOMContentLoaded', () => {
+    desc.textContent = short_desc;
+})
+
+const add_to_cart = document.querySelector('.panier');
+
+add_to_cart.addEventListener('click', () => {
+    let cart = localStorage.getItem('cart');
+    console.log(cart);
+    let actualCart;
+    let actualItem = document.querySelector('.specs').id;
+    
+    if (!cart) {
+        actualCart = [{id: actualItem, quantity: 1}];
+        localStorage.setItem('cart', JSON.stringify(actualCart));
+    } else {
+        actualCart = JSON.parse(cart);
+        let inCart = false;
+        for (let i = 0; i < actualCart.length; i++) {
+            if (actualCart[i].id == actualItem) {
+                actualCart[i].quantity++;
+                inCart = true;
+            }
+        }
+        if (!inCart) {
+            let new_item = {
+                id: actualItem,
+                quantity: 1
+            };
+            actualCart.push(new_item);
+        }
+        localStorage.setItem('cart', JSON.stringify(actualCart));
+    }
+    window.location.href = '/cart';
+})
 
 plus.addEventListener('click', function() {
     if (desc.textContent === short_desc) {
         desc.textContent = full_desc;
+        plus.textContent = 'Voir moins';
     } else {
         desc.textContent = short_desc;
+        plus.textContent = 'Voir plus';
     }
 });
 

@@ -4,34 +4,17 @@ const item = document.querySelectorAll('.item');
 const croissant = document.querySelector('#croissant');
 const decroissant = document.querySelector('#decroissant');
 
-const liste_croissante = []
-const liste_decroissante = []
+const liste_croissante = Array.prototype.slice.call(item);
+const liste_decroissante = Array.prototype.slice.call(item);
 
-item.forEach(item => {
-    if (liste_croissante.length === 0) {
-        liste_croissante.push(item);
-        liste_decroissante.push(item);
-    } else {
-        let i = 0;
-        while (i < liste_croissante.length && item.querySelector('.prix').textContent > liste_croissante[i].querySelector('.prix').textContent) {
-            i++;
-        }
-        liste_croissante.splice(i, 0, item);
-
-        i = 0;
-        
-        while (i < liste_decroissante.length && item.querySelector('.prix').textContent < liste_decroissante[i].querySelector('.prix').textContent) {
-            i++;
-        }
-        liste_decroissante.splice(i, 0, item);
-    }
-});
+liste_croissante.sort((a, b) => parseFloat(a.querySelector('.infos>.price>.prix').textContent) - parseFloat(b.querySelector('.infos>.price>.prix').textContent))
+liste_decroissante.sort((a, b) => parseFloat(b.querySelector('.infos>.price>.prix').textContent) - parseFloat(a.querySelector('.infos>.price>.prix').textContent))
 
 croissant.addEventListener('click', () => {
     items.innerHTML = '';
     liste_croissante.forEach(item => {
         items.appendChild(item);
-    });
+    })
 });
 
 decroissant.addEventListener('click', () => {

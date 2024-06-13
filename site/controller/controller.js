@@ -16,10 +16,12 @@ exports.Index = async (req, res) => {
         let listProducts = await Model.getProducts();
         for(let i=0; i < listProducts.length;i++){
             listProducts[i].images = await Model.getImages(listProducts[i].id);;
+            console.log(listProducts[i].images[0].path);
         }
 
         listProducts.sort((a, b) => b.Promo - a.Promo);
         listProducts.reverse();
+        console.log(listProducts);
         res.render('index', {listProducts});
     } catch (error) {
         res.status(500).json({

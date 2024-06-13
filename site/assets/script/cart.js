@@ -62,17 +62,33 @@ items_infos.forEach(item_info => {
 
     remove.addEventListener('click', () => {
         const cart = JSON.parse(localStorage.getItem('cart'));
-
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].id == item_info.id) {
+                cart.splice(i, 1);
+            }
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location.reload();
     })
 });
 
 function updateTotal() {
     const total = document.querySelector('.total');
-    const prices = document.querySelectorAll('.price>p:nth-child(2)');
+    const items = document.querySelectorAll('.item-infos');
+
+    const cart = JSON.parse(localStorage.getItem('cart'));
 
     let total_price = 0;
-    prices.forEach(price => {
-        total_price += parseInt(price.textContent);
+    items.forEach(item => {
+        console.log(item.querySelector('.name-price>.price>.prix').textContent);
+        let price = parseInt(item.querySelector('.name-price>.price>.prix').textContent);
+        for (let i = 0; i < cart.length; i++) {
+            if (item.id == cart[i].id) {
+                console.log(price);
+                total_price += price * cart[i].quantity;
+                console.log(total_price);
+            }
+        }
     });
     total.textContent = total_price + "€";
     total.setAttribute('value', total_price);

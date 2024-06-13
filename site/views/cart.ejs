@@ -24,12 +24,12 @@
                 <div class="item" data="<%= item %>">
                     <img src="<%= item.images[0].path %>">
                     
-                    <div class="item-infos">
+                    <div class="item-infos" id="<%= item.id %>">
                         <div class="name-price">
                             <p> <%= item.Name %> </p>
                             <div class="price">
                                 <p class="reduction"> <%= item.Price %>€ </p>
-                                <p> <%= item.Promo %>€ </p>
+                                <p class="prix"> <%= item.Promo %>€ </p>
                             </div>
                         </div>
 
