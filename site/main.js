@@ -15,4 +15,4 @@ app.use(routes);
 
 app.use('/assets', express.static('assets'));
 
-app.listen(port, () => console.log(`localhost:${port}/index.html`));
+app.listen(port, () => console.log(`localhost:${port}/accueil`));

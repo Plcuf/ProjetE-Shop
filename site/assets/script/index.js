@@ -1,20 +1,25 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const tri_buttons = document.getElementsByName("sort");
-    const items = document.querySelector('.items');
-    tri_buttons.forEach(button => {
-        button.addEventListener("changed", () => {
-            if (button.id === "croissant") {
-                console.log('quaso');
-                for(let i = 0; i < items.length/2; i++) {
-                    let save = items.children[i];
-                    items.children[i].innerHTML = items.children[items.length - (i + 1)].innerHTML;
-                    items.children[items.children[items.length - (i + 1)]].innerHTML = save.innerHTML;
-                }
-                
-            } else {
-                items.style.flexDirection = "row-reversed";
-                
-            }
-        });
+const items = document.querySelector('.items');
+const item = document.querySelectorAll('.item');
+
+const croissant = document.querySelector('#croissant');
+const decroissant = document.querySelector('#decroissant');
+
+const liste_croissante = Array.prototype.slice.call(item);
+const liste_decroissante = Array.prototype.slice.call(item);
+
+liste_croissante.sort((a, b) => parseFloat(a.querySelector('.infos>.price>.prix').textContent) - parseFloat(b.querySelector('.infos>.price>.prix').textContent))
+liste_decroissante.sort((a, b) => parseFloat(b.querySelector('.infos>.price>.prix').textContent) - parseFloat(a.querySelector('.infos>.price>.prix').textContent))
+
+croissant.addEventListener('click', () => {
+    items.innerHTML = '';
+    liste_croissante.forEach(item => {
+        items.appendChild(item);
     })
-})
+});
+
+decroissant.addEventListener('click', () => {
+    items.innerHTML = '';
+    liste_decroissante.forEach(item => {
+        items.appendChild(item);
+    });
+});

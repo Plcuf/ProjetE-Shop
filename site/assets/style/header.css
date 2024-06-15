@@ -72,6 +72,9 @@ header>.top-menu>.logo {
     object-fit: contain;
 }
 
+header>.top-menu>.logo:hover {
+    cursor: pointer;
+}
 header.top-menu> img:hover {
     cursor: pointer;
 }
@@ -144,7 +147,18 @@ header.top-menu> img:hover {
     transition: .3s;
 }
 
+.side>.side-menu>.categories>li>a {
+    text-decoration: none;
+    color: var(--text-color      );
+}
+
 .side>.side-menu>.categories>li:hover {
+    cursor: pointer;
+    transform: translateX(10px);
+    color: var(--secondary-signature-color);
+}
+
+.side>.side-menu>.categories>li>a:hover {
     cursor: pointer;
     transform: translateX(10px);
     color: var(--secondary-signature-color);

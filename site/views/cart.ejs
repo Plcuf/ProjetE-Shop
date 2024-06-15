@@ -7,98 +7,50 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../assets/style/cart.css">
+        <link rel="stylesheet" href="../assets/style/header.css">
     </head>
     <body>
+        <header>
+            <%- include('./header'); %>
+        </header>
+        <%- include('./side'); %>
         <div class="buy">
             <a href="#"> Acheter </a>
             <p class="total"> 300€ </p>
         </div>
 
-        <div class="cart-items">
-            <div class="item">
-                <img src="../assets/img/images/7afkiyfds1u61.jpg">
-                
-                <div class="item-infos">
-                    <div class="name-price">
-                        <p> Poster Horimiya </p>
-                        <div class="price">
-                            <p class="reduction"> 20€ </p>
-                            <p> 12€ </p>
+        <div class="cart-items" data="<%= JSON.stringify(listProducts) %>">
+            <% listProducts.forEach(item => { %>
+                <div class="item" data="<%= item %>">
+                    <img src="<%= item.images[0].path %>">
+                    
+                    <div class="item-infos" id="<%= item.id %>">
+                        <div class="name-price">
+                            <p> <%= item.Name %> </p>
+                            <div class="price">
+                                <p class="reduction"> <%= item.Price %>€ </p>
+                                <p class="prix"> <%= item.Promo %>€ </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="button-line">
-                        <div class="quantity">
-                            <button class="minus"> - </button>
-                            <p> 1 </p>
-                            <button class="plus"> + </button>
-                        </div>
-    
-                        <div class="buttons">
-                            <button class="remove"> Retirer </button>
-                            <button class="favs"> Favs </button>
-                            <button class="Buy"> Acheter </button>
+                        <div class="button-line">
+                            <div class="quantity">
+                                <button class="minus"> - </button>
+                                <p> 1 </p>
+                                <button class="plus"> + </button>
+                            </div>
+        
+                            <div class="buttons">
+                                <button class="remove"> Retirer </button>
+                                <button class="favs"> Favs </button>
+                                <button class="Buy"> Acheter </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="item">
-                <img src="../assets/img/images/7afkiyfds1u61.jpg">
-                
-                <div class="item-infos">
-                    <div class="name-price">
-                        <p> Poster Horimiya </p>
-                        <div class="price">
-                            <p class="reduction"> 20€ </p>
-                            <p> 12€ </p>
-                        </div>
-                    </div>
-
-                    <div class="button-line">
-                        <div class="quantity">
-                            <button class="minus"> - </button>
-                            <p> 1 </p>
-                            <button class="plus"> + </button>
-                        </div>
-    
-                        <div class="buttons">
-                            <button class="remove"> Retirer </button>
-                            <button class="favs"> Favs </button>
-                            <button class="Buy"> Acheter </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <img src="../assets/img/images/7afkiyfds1u61.jpg">
-                
-                <div class="item-infos">
-                    <div class="name-price">
-                        <p> Poster Horimiya </p>
-                        <div class="price">
-                            <p class="reduction"> 20€ </p>
-                            <p> 12€ </p>
-                        </div>
-                    </div>
-
-                    <div class="button-line">
-                        <div class="quantity">
-                            <button class="minus"> - </button>
-                            <p>1</p>
-                            <button class="plus"> + </button>
-                        </div>
-    
-                        <div class="buttons">
-                            <button class="remove"> Retirer </button>
-                            <button class="favs"> Favs </button>
-                            <button class="Buy"> Acheter </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </div>
         <script src="../assets/script/cart.js"></script>
+        <script src="../assets/script/header.js"></script>
     </body>
 </html>
