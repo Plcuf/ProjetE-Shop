@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const buy_button = document.querySelector(".buy>a");
     const cart_content = document.querySelector(".cart-items");
     if (!cart || cart.length == 0) {
-        localStorage.setItem('cart', '[]');
         buy_button.setAttribute('href', '#');
         buy_button.class += 'inactive';
         cart_content.innerHTML = "<p class='vide'> Votre panier est vide. </p>";
@@ -34,6 +33,7 @@ items_infos.forEach(item_info => {
     const quantity = item_info.children[1].children[0].children[1];
     
     const remove = item_info.children[1].children[1].children[0];
+    const fav = item_info.children[1].children[1].children[1];
 
     const reduction = item_info.children[0].children[1].children[0];
     const price = item_info.children[0].children[1].children[1];
@@ -70,6 +70,23 @@ items_infos.forEach(item_info => {
         localStorage.setItem('cart', JSON.stringify(cart));
         window.location.reload();
     })
+
+    fav.addEventListener('click', () => {
+        const favorites = JSON.parse(localStorage.getItem('fav'));
+        let isFav = false;
+        for (let i = 0; i < favorites.length; i++) {
+            if (favorites[i] == item_info.id) {
+                favorites.splice(i, 1);
+                isFav = true;
+            }
+        }
+
+        if (!isFav) {
+            favorites.push(item_info.id);
+        }
+
+        localStorage.setItem('fav', JSON.stringify(favorites));
+    })
 });
 
 function updateTotal() {
@@ -80,13 +97,10 @@ function updateTotal() {
 
     let total_price = 0;
     items.forEach(item => {
-        console.log(item.querySelector('.name-price>.price>.prix').textContent);
         let price = parseInt(item.querySelector('.name-price>.price>.prix').textContent);
         for (let i = 0; i < cart.length; i++) {
             if (item.id == cart[i].id) {
-                console.log(price);
                 total_price += price * cart[i].quantity;
-                console.log(total_price);
             }
         }
     });
@@ -105,23 +119,5 @@ function updateCart() {
 
     localStorage.setItem('cart', JSON.stringify(cart));
 }
-
-function isFav(id) {
-    const fav = JSON.parse(localStorage.getItem('fav'));
-    let isFav = false;
-
-    fav.forEach(item => {
-        if (item == id) {
-            isFav = true;
-        }
-    });
-
-    if (isFav) {
-        return true;
-    }
-    return false;
-}
-
-
 
 updateTotal();
