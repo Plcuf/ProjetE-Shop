@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Favourites</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../assets/style/cart.css">
+        <link rel="stylesheet" href="../assets/style/header.css">
+    </head>
+    <body>
+        <header>
+            <%- include('./header'); %>
+        </header>
+        <%- include('./side'); %>
+        <div class="cart-items" data="<%= JSON.stringify(listProducts) %>">
+            <% listProducts.forEach(item => { %>
+                <div class="item" data="<%= item %>">
+                    <img src="<%= item.images[0].path %>">
+                    
+                    <div class="item-infos" id="<%= item.id %>">
+                        <div class="name-price">
+                            <p> <%= item.Name %> </p>
+                            <div class="price">
+                                <p class="reduction"> <%= item.Price %>€ </p>
+                                <p class="prix"> <%= item.Promo %>€ </p>
+                            </div>
+                        </div>
+
+                        <div class="button-line">
+        
+                            <div class="buttons">
+                                <button class="remove"> Retirer </button>
+                                <button class="favs"> Cart </button>
+                                <button class="Buy"> Acheter </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <script src="../assets/script/cart.js"></script>
+        <script src="../assets/script/header.js"></script>
+    </body>
+</html>
