@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+
+    font-family: 'Josefin Sans';
+    color: var(--text-color);
+    /* border: 1px solid */
+
+}
+
+:root {
+    --dark-background: #242424;
+    --light-background: #333333;
+    --signature-color: #8F4FBA;
+    --secondary-signature-color: #C09BD8;
+    --text-color: #E6E4CE;
+}
+
+@font-face {
+    font-family: 'Josefin Sans';
+    src: url(../fonts/JosefinSans-VariableFont_wght.ttf);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--dark-background);
+}
+
+.container {
+    width: 70%;
+    height: 50%;
+    max-width: 700px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    border: 3px solid var(--secondary-signature-color);
+    border-radius: 10px;
+    background-color: var(--light-background);
+}
+
+.error {
+    display: flex;
+    color: var(--text-color);
+    font-size: 100px;
+}
+
+.error>.pur {
+    color: var(--secondary-signature-color);
+}
+
+.container>p {
+    font-size: 30px;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--secondary-signature-color);
+}

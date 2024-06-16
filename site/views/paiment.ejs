@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Bonk Shop </title>
+    <link rel="stylesheet" href="../assets/style/paiment.css">
+</head>
+<body>
+    <form class="form">
+        <div class="paiment">
+            <p> Confirmer le paiement </p>
+            <div class="price">
+                <p> Prix </p>
+                <p> 2000000€ </p>
+            </div>
+            <div class="infos">
+                <p class="big-title"> Infos bancaires </p>
+                <div class="number-cvc big-cat">
+                    <div class="number cat">
+                        <label for="card-number"> Numéro de carte </label>
+                        <input type="text" name="card-number" id="card-number">
+                    </div>
+    
+                    <div class="cvc cat">
+                        <label for="cvc"> Cvc </label>
+                        <input type="text" name="cvc" id="cvc">
+                    </div>
+                </div>
+
+                <div class="name-expiration big-cat">
+                    <div class="name cat">
+                        <label for="name"> Nom </label>
+                        <input type="text" name="name" id="name">
+                    </div>
+    
+                    <div class="expiration cat">
+                        <label for="expiration"> Date d'expiration </label>
+                        <input type="text" name="expiration" id="expiration">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="adress">
+                <p class="big-title"> Adresse</p>
+                <div class="city-postal big-cat">
+                    <div class="city cat">
+                        <label for="city"> Ville </label>
+                        <input type="text" name="city" id="city">
+                    </div>
+
+                    <div class="postal cat">
+                        <label for="postal"> Code postal </label>
+                        <input type="text" name="postal" id="postal">
+                    </div>
+                </div>
+
+                <div class="adresshouse-housenumber big-cat">
+                    <div class="adresshouse cat">
+                        <label for="adress"> Adresse </label>
+                        <input type="text" name="adress" id="adress">
+                    </div>
+
+                    <div class="housenumber cat">
+                        <label for="house-number"> Numéro </label>
+                        <input type="text" name="house-number" id="house-number">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="submit"> Payer </button>
+    </div>
+</body>
+</html>
