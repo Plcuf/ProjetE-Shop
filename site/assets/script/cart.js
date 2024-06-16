@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let cart = await localStorage.getItem("cart");
     const buy_button = document.querySelector(".buy>a");
     const cart_content = document.querySelector(".cart-items");
+    const previous = document.querySelector('div.buy').id;
+    if (previous == 'handler') {
+        localStorage.setItem('cart', '[]');
+    }
     if (!cart || cart.length == 0) {
         buy_button.setAttribute('href', '#');
         buy_button.class += 'inactive';
@@ -34,6 +38,7 @@ items_infos.forEach(item_info => {
     
     const remove = item_info.children[1].children[1].children[0];
     const fav = item_info.children[1].children[1].children[1];
+    const buy = item_info.children[1].children[1].children[2];
 
     const reduction = item_info.children[0].children[1].children[0];
     const price = item_info.children[0].children[1].children[1];
@@ -87,11 +92,16 @@ items_infos.forEach(item_info => {
 
         localStorage.setItem('fav', JSON.stringify(favorites));
     })
+
+    buy.addEventListener('click', () => {
+        window.location.href = `/payment/${parseFloat(price.textContent)}`;
+    })
 });
 
 function updateTotal() {
     const total = document.querySelector('.total');
     const items = document.querySelectorAll('.item-infos');
+    const buy_all = document.querySelector('div.buy>a');
 
     const cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -106,6 +116,7 @@ function updateTotal() {
     });
     total.textContent = total_price + "€";
     total.setAttribute('value', total_price);
+    buy_all.href = `/payment/${total_price}`;
 }
 
 function updateCart() {
