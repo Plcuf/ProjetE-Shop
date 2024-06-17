@@ -23,7 +23,7 @@
     </div>
     <div class="items" id="items">
         <% listProducts.forEach(item => { %>
-            <a class="item" href="produit/<%= item.id %>">
+            <a data-franchise="<%= item.id_1 %>" data-type="<%= item.type %>" class="item" href="produit/<%= item.id %>">
                 <div class="images">
                     <img src="<%= item.images[0].path %>">
                     <img class="underlay" src="<%= item.images[1].path %>">
