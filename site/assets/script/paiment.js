@@ -45,6 +45,5 @@ submit.addEventListener('click', async () => {
     const cvc = document.getElementById('cvc').value;
     const nb = document.getElementById('card-number').value;
     const date = document.getElementById('expiration').value;
-    console.log(nb, date, cvc);
     window.location.href = `/paymentHandle/${cvc}/${nb}/${date}`;
 });

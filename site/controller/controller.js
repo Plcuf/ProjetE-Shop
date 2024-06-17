@@ -93,11 +93,11 @@ exports.Pay = async (req, res) => {
 }
 
 exports.PayHandle = async (req, res) => {
+    console.log(cvc, number, date);
     if (previous == 'pay') {
         let cvc = req.params.cvc;
         let number = req.params.number;
         let date = req.params.date;
-        console.log(cvc, number, date);
 
         if (cvc.length == 3 && date.length == 5 && number.length == 16) {
 
