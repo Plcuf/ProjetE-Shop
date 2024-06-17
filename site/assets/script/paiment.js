@@ -46,27 +46,5 @@ submit.addEventListener('click', async () => {
     const nb = document.getElementById('card-number').value;
     const date = document.getElementById('expiration').value;
     console.log(nb, date, cvc);
-    console.log('coucou');
-    if (nb.length == 16 && date.length == 5 && cvc.length == 3) {
-        console.log('je ne me sens pas en sécurité avec tous ces bougnouls');
-        const bodyData = {
-            card: {
-                number: nb,
-                expiration_date: date,
-                cvc: cvc
-            },
-            payment_intent: {
-                price: price
-            },
-        };
-        console.log(bodyData);
-        let result = await doPayment(bodyData);
-        console.log(result);
-        if (!result.ok) {
-            window.location.href = `/payment/${price}/refused`;
-        } else {
-            window.location.href = '/accueil';
-        }
-    } else {
-        window.location.href = `/payment/${price}/card`;
-    }});
+    window.location.href = `/paymentHandle/${cvc}/${nb}/${date}`;
+});

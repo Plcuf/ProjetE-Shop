@@ -78,7 +78,7 @@ exports.Favorites = async (req, res) => {
 }
 
 exports.Pay = async (req, res) => {
-    if (previous == 'cart' || previous == 'handler') {
+    if (previous == 'cart' || previous == 'handler' || previous == 'pay') {
         try {
             let price = req.params.price;
             let error = req.params.error;
@@ -99,39 +99,47 @@ exports.PayHandle = async (req, res) => {
         let date = req.params.date;
         console.log(cvc, number, date);
 
-        const bodyData = {
-            card: {
-                number: number,
-                expiration_date: date,
-                cvc: cvc
-            },
-            payment_intent: {
-                price: price
-            },
-        };
+        if (cvc.length == 3 && date.length == 5 && number.length == 16) {
 
-        const api_token = '63d6706e-13c0-4aa7-9726-931aa32ccb69';
-        let result;
-        await fetch(`https://challenge-js.ynovaix.com/payment`, {
-            method: "POST",
-            headers: {
-                Authorization: api_token,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bodyData)
-        })
-        .then (response => {
-            return response.json();
-        })
-        .then (async data => {
-            console.log(data);
-            result = await data;
-        })
-        .catch (error => {
-            console.log(error);
-            throw(error);
-        });
-        return result;
+            const bodyData = {
+                card: {
+                    number: number,
+                    expiration_date: date,
+                    cvc: cvc
+                },
+                payment_intent: {
+                    price: price
+                },
+            };
+            
+            const api_token = '63d6706e-13c0-4aa7-9726-931aa32ccb69';
+            let result;
+            await fetch(`https://challenge-js.ynovaix.com/payment`, {
+                method: "POST",
+                headers: {
+                    Authorization: api_token,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(bodyData)
+            })
+            .then (response => {
+                return response.json();
+            })
+            .then (async data => {
+                console.log(data);
+                result = await data;
+            })
+            .catch (error => {
+                console.log(error);
+                throw(error);
+            });
+            
+            if (!result.ok) {
+                res.redirect(`/payment/${price}/refused`);
+            }
+        } else {
+            res.redirect(`/payment/${price}/card`);
+        }
     } else {
         res.redirect('/');
     }
