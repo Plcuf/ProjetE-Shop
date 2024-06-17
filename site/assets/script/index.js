@@ -34,3 +34,57 @@ decroissant.addEventListener('click', () => {
         items.appendChild(item);
     });
 });
+
+const all_items = document.querySelectorAll('.item');
+const all_franchises = document.querySelectorAll('.franchises')
+const all_type = document.querySelectorAll('.type')
+
+const current_items = all_items;
+const current_franchise = "all";
+const current_type = "all";
+
+const display = document.querySelector('.items')
+
+function filter() {
+    if (current_franchise == "all" && current_type == "all") {
+        display.innerHTML = '';
+        current_items.forEach(item => {
+            display.appendChild(item);
+        });
+    }
+    else {
+        display.innerHTML = '';
+        current_items.forEach(item => {
+            if (current_franchise == "all") {
+                if (item.dataset.type == current_type) {
+                    display.appendChild(item);
+                }
+            }
+            else if (current_type == "all") {
+                if (item.dataset.franchise == current_franchise) {
+                    display.appendChild(item);
+                }
+            }
+            else {
+                if (item.dataset.franchise == current_franchise && item.dataset.type == current_type) {
+                    display.appendChild(item);
+                }
+            }
+        });
+    }
+
+}
+
+all_franchises.forEach(franchise => {
+    franchise.addEventListener('click', () => {
+        current_franchise = franchise.textContent;
+        filter();
+    })
+});
+
+all_type.forEach(type => {
+    type.addEventListener('click', () => {
+        current_type = type.textContent;
+        filter();
+    })
+});
