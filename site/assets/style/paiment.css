@@ -36,7 +36,7 @@ body {
     margin-top: 50px;
     width: 80%;
     max-width: 600px;
-    height: 70%;
+    height: 77%;
 
     display: flex;
     flex-direction: column;
@@ -61,12 +61,12 @@ body {
 .form>.paiment>p {
     font-size:30px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .price {
     width: 170px;
-    height: 80px;
+    height: 60px;
 
     display: flex;
     flex-direction: column;
@@ -87,7 +87,7 @@ body {
 
     color: var(--dark-background);
     font-family: "Josefin Sans";
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
     background-color: var(--secondary-signature-color);
     border: 3px solid var(--secondary-signature-color);
@@ -104,7 +104,7 @@ body {
 
     color: var(--text-color);
     font-family: "Josefin Sans";
-    font-size: 25px;
+    font-size: 20px;
     background-color: var(--dark-background);
 }
 
@@ -133,9 +133,9 @@ input {
 }
 
 .big-title {
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-decoration: underline;
     text-underline-offset: 10px;
 }

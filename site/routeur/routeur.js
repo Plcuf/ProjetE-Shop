@@ -9,5 +9,7 @@ routeur.get('/produit/:id', controller.Product);
 routeur.get('/cart', controller.Cart);
 routeur.get('/favorites', controller.Favorites);
 routeur.get('/payment/:price', controller.Pay);
+routeur.get('/payment/:price/:error', controller.Pay);
+routeur.get('/paymentHandle', controller.PayHandle);
 
 module.exports = routeur;
