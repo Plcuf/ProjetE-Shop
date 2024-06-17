@@ -5,7 +5,7 @@ const port = 8080;
 const app = express();
 
 app.use(cors({
-    origin: "*"
+    origin: '*'
 }));
 
 app.set('view engine', 'ejs');

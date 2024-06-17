@@ -10,6 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const add_to_cart = document.querySelector('.panier');
+const add_to_fav = document.querySelector('.favoris');
+const item = JSON.parse(document.querySelector('.item').getAttribute('data'));
+
+add_to_fav.addEventListener('click', () => {
+    const favorites = JSON.parse(localStorage.getItem('fav'));
+        let isFav = false;
+        for (let i = 0; i < favorites.length; i++) {
+            if (favorites[i] == item.id) {
+                favorites.splice(i, 1);
+                isFav = true;
+            }
+        }
+
+        if (!isFav) {
+            favorites.push(item.id);
+        }
+
+        localStorage.setItem('fav', JSON.stringify(favorites));
+})
 
 add_to_cart.addEventListener('click', () => {
     let cart = localStorage.getItem('cart');

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const cart_content = document.querySelector(".cart-items");
     const previous = document.querySelector('div.buy').id;
     if (previous == 'handler') {
-        localStorage.setItem('cart', '[]');
+        localStorage.setItem('cart', '[]')
     }
     if (!cart || cart.length == 0) {
         buy_button.setAttribute('href', '#');

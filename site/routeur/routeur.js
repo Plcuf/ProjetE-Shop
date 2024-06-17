@@ -10,6 +10,6 @@ routeur.get('/cart', controller.Cart);
 routeur.get('/favorites', controller.Favorites);
 routeur.get('/payment/:price', controller.Pay);
 routeur.get('/payment/:price/:error', controller.Pay);
-routeur.get('/paymentHandle', controller.PayHandle);
+routeur.get('/paymentHandle/:cvc/:number/:date', controller.PayHandle);
 
 module.exports = routeur;

@@ -1,5 +1,4 @@
 const Model = require('../models/products');
-const request = require('request');
 
 let previous = '';
 
@@ -82,8 +81,9 @@ exports.Pay = async (req, res) => {
     if (previous == 'cart' || previous == 'handler') {
         try {
             let price = req.params.price;
+            let error = req.params.error;
             previous = 'pay';
-            res.render('paiment', {price});
+            res.render('paiment', {price, error});
         } catch (error) {
             res.status(500);
         }
@@ -93,77 +93,46 @@ exports.Pay = async (req, res) => {
 }
 
 exports.PayHandle = async (req, res) => {
-    if (previous == 'pay'){
+    if (previous == 'pay') {
+        let cvc = req.params.cvc;
+        let number = req.params.number;
+        let date = req.params.date;
+        console.log(cvc, number, date);
+
+        const bodyData = {
+            card: {
+                number: number,
+                expiration_date: date,
+                cvc: cvc
+            },
+            payment_intent: {
+                price: price
+            },
+        };
+
         const api_token = '63d6706e-13c0-4aa7-9726-931aa32ccb69';
-        try {
-            let price = req.param('price');
-            let cvc = req.param('cvc');
-            let card_nb = req.param('nb');
-            let date = req.param('date');
-            previous = 'handler';
-            console.log(price);
-            console.log(cvc);
-            console.log(card_nb);
-            console.log(date);
-            if(cvc.length != 3 || date.length != 5 || card_nb.length != 16) {
-                res.redirect(`/payment/${price}/card`);
-            }
-            const bodyData = {
-                card: {
-                    number: card_nb,
-                    expiration_date: date,
-                    cvc: cvc
-                },
-                payment_intent: {
-                    price: price
-                },
-            };
-
-            const result = await fetch(`https://challenge-js.ynovaix.com/payment`, {
-                method: "POST",
-                headers: {
-                    Authorization: api_token,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(bodyData)
-            });
-
-            if (!result.ok) {
-                res.redirect(`/payment/${price}/refused`);
-            }
-            let code_postal = req.param('postal');
-            let ville = req.param('ville');
-            let adresse = req.param('adresse');
-            let num = req.param('num');
-
-            let query = `${num}+${adresse}+${code_postal}+${ville}`;
-            let real_adress = `${num} ${adresse} ${code_postal} ${ville}`
-
-            console.log(code_postal);
-            console.log(ville);
-            console.log(adresse);
-            console.log(num);
-            console.log(query);
-            console.log(real_adress);
-
-            request(`/https://api-adresse.data.gouv.fr/search/?q=${query}`, (error, response, body) => {
-                if (error) {
-                    console.log(error);
-                    res.status(500);
-                }
-                
-                if(!response.ok) {
-                    res.redirect(`/payment/${price}/adress`);
-                } else {
-                    res.redirect('/cart');
-                }
-            })
-
-        } catch (err) {
-            console.log(err);
-            res.status(500);
-        }
+        let result;
+        await fetch(`https://challenge-js.ynovaix.com/payment`, {
+            method: "POST",
+            headers: {
+                Authorization: api_token,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bodyData)
+        })
+        .then (response => {
+            return response.json();
+        })
+        .then (async data => {
+            console.log(data);
+            result = await data;
+        })
+        .catch (error => {
+            console.log(error);
+            throw(error);
+        });
+        return result;
     } else {
-        res.status(403);
+        res.redirect('/');
     }
 }

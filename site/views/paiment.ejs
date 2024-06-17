@@ -21,10 +21,13 @@
             </div>
             <div class="infos">
                 <p class="big-title"> Infos bancaires </p>
+                <% if (error == "card") { %>
+                    <p style="color: red"> Données carte invalides </p>
+                <% } %>
                 <div class="number-cvc big-cat">
                     <div class="number cat">
                         <label for="card-number"> Numéro de carte </label>
-                        <input type="text" name="card-number" id="card-number">
+                        <input type="text" name="nb" id="card-number">
                     </div>
     
                     <div class="cvc cat">
@@ -49,32 +52,19 @@
 
             <div class="adress">
                 <p class="big-title"> Adresse</p>
-                <div class="city-postal big-cat">
+                <div class=" big-cat">
                     <div class="city cat">
-                        <label for="city"> Ville </label>
-                        <input type="text" name="city" id="city">
-                    </div>
-
-                    <div class="postal cat">
-                        <label for="postal"> Code postal </label>
-                        <input type="text" name="postal" id="postal">
+                        <input type="text" name="city" id="adress">
                     </div>
                 </div>
-
-                <div class="adresshouse-housenumber big-cat">
-                    <div class="adresshouse cat">
-                        <label for="adress"> Adresse </label>
-                        <input type="text" name="adress" id="adress">
-                    </div>
-
-                    <div class="housenumber cat">
-                        <label for="house-number"> Numéro </label>
-                        <input type="text" name="house-number" id="house-number">
-                    </div>
+                <div class="autocontainer">
+                    
                 </div>
             </div>
         </div>
-
+        <% if (error == "refused") { %>
+            <p style="color: red"> Paiement refusé </p>
+        <% } %>
         <button class="submit"> Payer </button>
     </div>
     <script src="../assets/script/paiment.js"></script>
